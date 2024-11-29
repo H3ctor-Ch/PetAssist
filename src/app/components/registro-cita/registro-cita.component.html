@@ -1,0 +1,112 @@
+<body>
+    <!-- Formulario de citas -->
+    <section class="container my-5">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Agendar Cita Médica</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="nombreUsuario" class="form-label">Nombre completo del usuario</label>
+                    <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingresa tu nombre completo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nombreMascota" class="form-label">Nombre de la mascota</label>
+                    <input type="text" class="form-control" id="nombreMascota" placeholder="Ingresa el nombre de tu mascota" required>
+                </div>
+                <div class="mb-3">
+                    <label for="edadMascota" class="form-label">Edad de la mascota</label>
+                    <input type="number" class="form-control" id="edadMascota" placeholder="Ingresa la edad de tu mascota" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tipo de mascota</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMascota" id="tipoPerro" value="Perro" required onclick="toggleTipoMascotaOtro()">
+                            <label class="form-check-label" for="tipoPerro">Perro</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMascota" id="tipoGato" value="Gato" required onclick="toggleTipoMascotaOtro()">
+                            <label class="form-check-label" for="tipoGato">Gato</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMascota" id="tipoAve" value="Ave" required onclick="toggleTipoMascotaOtro()">
+                            <label class="form-check-label" for="tipoAve">Ave</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipoMascota" id="tipoOtro" value="Otro" required onclick="toggleTipoMascotaOtro()">
+                            <label class="form-check-label" for="tipoOtro">Otro</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 d-none" id="tipoMascotaOtro">
+                    <label for="otroTipoMascota" class="form-label">¿Qué tipo de mascota?</label>
+                    <input type="text" class="form-control" id="otroTipoMascota" placeholder="Especifica el tipo de mascota">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Síntomas</label>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sintoma-fiebre" value="Fiebre">
+                            <label class="form-check-label" for="sintoma-fiebre">Fiebre</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sintoma-vomito" value="Vómito">
+                            <label class="form-check-label" for="sintoma-vomito">Vómito</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sintoma-perdida-apetito" value="Pérdida de apetito">
+                            <label class="form-check-label" for="sintoma-perdida-apetito">Pérdida de apetito</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="sintoma-otro" value="Otro" onclick="toggleDescripcionSintoma()">
+                            <label class="form-check-label" for="sintoma-otro">Otro</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 d-none" id="descripcion-sintoma">
+                    <label for="descripcionSintoma" class="form-label">Describe el síntoma</label>
+                    <textarea class="form-control" id="descripcionSintoma" rows="3" placeholder="Describe el síntoma que presenta tu mascota"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="especialista" class="form-label">Selecciona al especialista</label>
+                    <select class="form-select" id="especialista" required>
+                        <option selected disabled value="">Elige un veterinario</option>
+                        <option value="1">Dr. Juan Pérez - Clínica Mascotas Felices</option>
+                        <option value="2">Dra. Ana López - Clínica Vida Animal</option>
+                        <option value="3">Dr. Carlos Martínez - Clínica Animalia</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="numeroContacto" class="form-label">Número de contacto</label>
+                    <input type="tel" class="form-control" id="numeroContacto" placeholder="Ingresa tu número telefónico" required>
+                </div>
+                <div class="mb-3">
+                    <label for="correoElectronico" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="correoElectronico" placeholder="Ingresa tu correo electrónico" required>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <textarea class="form-control" id="direccion" rows="3" placeholder="Ingresa tu dirección" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Agendar Cita</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function toggleTipoMascotaOtro() {
+            const otroTipo = document.getElementById("tipoMascotaOtro");
+            const otrosInputs = document.querySelectorAll('input[name="tipoMascota"]');
+            otroTipo.classList.toggle('d-none', ![...otrosInputs].some(input => input.checked && input.value === 'Otro'));
+        }
+
+        function toggleDescripcionSintoma() {
+            const descripcion = document.getElementById("descripcion-sintoma");
+            const sintomaOtro = document.getElementById("sintoma-otro");
+            descripcion.classList.toggle('d-none', !sintomaOtro.checked);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
