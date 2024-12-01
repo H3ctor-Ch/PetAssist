@@ -190,3 +190,14 @@ footer .wrapper li {
   visibility: visible;
   top: -45px;
 }
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-responsive {
+  max-width: 80%;
+  margin: 0 auto;
+}

@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { RegistroCitaComponent } from "./components/registro-cita/registro-cita.component";
-import { ConsultaClienteComponent } from './components/consulta-cliente/consulta-cliente.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RegistroCitaComponent, ConsultaClienteComponent],
+  imports: [RouterOutlet, RouterLink, RegistroCitaComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

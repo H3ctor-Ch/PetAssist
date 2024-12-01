@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { ConsultaClienteComponent } from './components/consulta-cliente/consulta-cliente.component';
 import { RegistroCitaComponent } from './components/registro-cita/registro-cita.component';
 import { InicioClienteComponent } from './components/inicio-cliente/inicio-cliente.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component'; 
+import { HistorialCitasComponent } from './components/historial-citas/historial-citas.component';
 
 export const routes: Routes = [
   {
@@ -11,18 +12,18 @@ export const routes: Routes = [
   },
   {
     path: 'inicio',
-    component: InicioClienteComponent // Aquí cargas el componente con el carrusel
-  },
-  {
-    path: 'consulta',
-    component: ConsultaClienteComponent
+    component: InicioClienteComponent 
   },
   {
     path: 'registro',
     component: RegistroCitaComponent
   },
   {
-    path: '**',
-    redirectTo: 'inicio'
+    path: 'catalogo',
+    component: CatalogoComponent
+  },
+  {
+    path: 'historial',
+    component: HistorialCitasComponent
   }
 ];
